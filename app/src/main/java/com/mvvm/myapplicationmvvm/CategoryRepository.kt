@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.google.gson.GsonBuilder
+import java.lang.Exception
 
 
 class CategoryRepository(application: Application) {
@@ -15,22 +16,26 @@ class CategoryRepository(application: Application) {
     //call api function
     fun callProductDetailApi(context: Context): MutableLiveData<ArrayList<CategoryData>>{
         val blackBlind = BlackBlind(context)
-        blackBlind.requestUrl("")
+        blackBlind.requestUrl("https://application.purityhub.co.in/api/get/masters/api/category")
         blackBlind.headersRequired(false)
         blackBlind.executeRequest(Request.Method.POST, object: VolleyCallback{
             override fun getResponse(response: String?) {
-                val gsonBuilder = GsonBuilder()
-                gsonBuilder.setDateFormat("M/d/yy hh:mm a")
-                val gson = gsonBuilder.create()
-                val brandCategory = gson.fromJson(
-                    response,
-                    Category::class.java
-                )
+               try {
+                   val gsonBuilder = GsonBuilder()
+                   gsonBuilder.setDateFormat("M/d/yy hh:mm a")
+                   val gson = gsonBuilder.create()
+                   val brandCategory = gson.fromJson(
+                       response,
+                       Category::class.java
+                   )
 
-                if (brandCategory.success && brandCategory.status == 1) {
-                    categoryDataArray = brandCategory.CategoryData
-
-                }
+                   if (brandCategory.success && brandCategory.status == 1) {
+                       categoryDataList = brandCategory.CategoryData as ArrayList<CategoryData>
+                        categoryDataArray.value = categoryDataList
+                   }
+               }catch (e: Exception){
+                   println("e = " + e.message)
+               }
             }
 
             override fun getError(error: String?) {
