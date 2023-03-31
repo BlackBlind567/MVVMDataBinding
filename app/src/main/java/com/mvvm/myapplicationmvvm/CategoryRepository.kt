@@ -30,7 +30,7 @@ class CategoryRepository(application: Application) {
                    )
 
                    if (brandCategory.success && brandCategory.status == 1) {
-                       categoryDataList = brandCategory.CategoryData as ArrayList<CategoryData>
+                       categoryDataList = brandCategory.data as ArrayList<CategoryData>
                         categoryDataArray.value = categoryDataList
                    }
                }catch (e: Exception){

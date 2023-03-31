@@ -2,11 +2,15 @@ package com.mvvm.myapplicationmvvm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request
+import com.google.gson.GsonBuilder
 import com.mvvm.myapplicationmvvm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,19 +27,63 @@ class MainActivity : AppCompatActivity() {
         binding.rvCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
 
-//        categoryViewModel.loadData(this@MainActivity).observe(this
-//        ) {
-//            println("getData1 == $it")
-//            if (it != null){
-//                println("getData == $it")
-//                arrayList = it
-////                adapter.addItems(arrayList)
-//                adapter = CategoryAdapter(this@MainActivity, arrayList)
-//                binding.rvCategory.adapter = adapter
+        categoryViewModel.loadData(this@MainActivity).observe(this
+        ) {
+            println("getData1 == $it")
+            if (it != null){
+                println("getData == $it")
+                arrayList = it
+//                adapter.addItems(arrayList)
+                adapter = CategoryAdapter(this@MainActivity, arrayList)
+                binding.rvCategory.adapter = adapter
+            }
+
+        }
+
+
+//        val blackBlind = BlackBlind(this@MainActivity)
+//        blackBlind.headersRequired(false)
+//
+//        blackBlind.requestUrl("https://application.purityhub.co.in/api/get/masters/api/category")
+//        blackBlind.executeRequest(Request.Method.POST, object : VolleyCallback {
+//            override fun getResponse(response: String?) {
+//                val gsonBuilder = GsonBuilder()
+//                gsonBuilder.setDateFormat("M/d/yy hh:mm a")
+//                val gson = gsonBuilder.create()
+//                val brandCategory = gson.fromJson(
+//                    response,
+//                    Category::class.java
+//                )
+////                responseMsg = brandCategory.message
+//                if (brandCategory.success && brandCategory.status == 1) {
+////                    Toast.makeText(requireContext(), brandCategory.message, Toast.LENGTH_SHORT)
+////                        .show()
+//
+////                    for (i in 0 until brandCategory.data.size) {
+////
+////                    }
+//
+//
+//                    arrayList = brandCategory. as ArrayList<CategoryData>
+////                    categoryArray.add(0, BrandCategoryData(-1, "", "All", -1))
+//                    val brandCategoryAdapter =
+//                        CategoryAdapter(
+//                            requireContext(), categoryArray, updateListener,
+//                            "categoryShortName"
+//                        )
+//                    binding.categoryRv.adapter = brandCategoryAdapter
+//                    stopLoading()
+//
+//                } else {
+//                    stopLoading()
+//                    Toast.makeText(requireContext(), responseMsg, Toast.LENGTH_SHORT).show()
+//                }
 //            }
 //
-//        }
-
+//            override fun getError(error: String?) {
+//                Toast.makeText(requireContext(), responseMsg, Toast.LENGTH_SHORT).show()
+//            }
+//        })
 
     }
 }
