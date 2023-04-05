@@ -1,9 +1,10 @@
-package com.mvvm.myapplicationmvvm
+package com.mvvm.myapplicationmvvm.mvvmBinding
 
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.mvvm.myapplicationmvvm.model.CategoryData
 
 class CategoryViewModel(application: Application) : AndroidViewModel(application) {
 

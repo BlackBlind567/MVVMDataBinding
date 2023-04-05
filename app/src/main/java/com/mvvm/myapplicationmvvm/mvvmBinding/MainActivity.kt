@@ -1,16 +1,12 @@
-package com.mvvm.myapplicationmvvm
+package com.mvvm.myapplicationmvvm.mvvmBinding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableArrayList
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request
-import com.google.gson.GsonBuilder
+import com.mvvm.myapplicationmvvm.model.CategoryData
+import com.mvvm.myapplicationmvvm.R
 import com.mvvm.myapplicationmvvm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +30,10 @@ class MainActivity : AppCompatActivity() {
                 println("getData == $it")
                 arrayList = it
 //                adapter.addItems(arrayList)
-                adapter = CategoryAdapter(this@MainActivity, arrayList)
+                adapter = CategoryAdapter(
+                    this@MainActivity,
+                    arrayList
+                )
                 binding.rvCategory.adapter = adapter
             }
 

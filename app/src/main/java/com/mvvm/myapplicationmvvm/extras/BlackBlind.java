@@ -1,4 +1,4 @@
-package com.mvvm.myapplicationmvvm;
+package com.mvvm.myapplicationmvvm.extras;
 
 import android.content.Context;
 import android.util.Log;

@@ -1,14 +1,17 @@
-package com.mvvm.myapplicationmvvm;
+package com.mvvm.myapplicationmvvm.mvvmBinding;
 
 import android.content.Context;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mvvm.myapplicationmvvm.extras.BlindAdapter;
+import com.mvvm.myapplicationmvvm.model.CategoryData;
+import com.mvvm.myapplicationmvvm.R;
 import com.mvvm.myapplicationmvvm.databinding.CategoryLayoutBinding;
 
 import java.util.ArrayList;
 
-public class CategoryAdapter extends BlindAdapter<CategoryData, CategoryLayoutBinding>{
+public class CategoryAdapter extends BlindAdapter<CategoryData, CategoryLayoutBinding> {
     public CategoryAdapter(Context context, ArrayList<CategoryData> arrayList) {
         super(context, arrayList);
     }

@@ -1,4 +1,4 @@
-package com.mvvm.myapplicationmvvm
+package com.mvvm.myapplicationmvvm.model
 
 data class CategoryData(
     val id: Int,

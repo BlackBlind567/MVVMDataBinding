@@ -1,10 +1,14 @@
-package com.mvvm.myapplicationmvvm
+package com.mvvm.myapplicationmvvm.mvvmBinding
 
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.google.gson.GsonBuilder
+import com.mvvm.myapplicationmvvm.extras.BlackBlind
+import com.mvvm.myapplicationmvvm.model.Category
+import com.mvvm.myapplicationmvvm.model.CategoryData
+import com.mvvm.myapplicationmvvm.extras.VolleyCallback
 import java.lang.Exception
 
 
@@ -18,7 +22,8 @@ class CategoryRepository(application: Application) {
         val blackBlind = BlackBlind(context)
         blackBlind.requestUrl("https://application.purityhub.co.in/api/get/masters/api/category")
         blackBlind.headersRequired(false)
-        blackBlind.executeRequest(Request.Method.POST, object: VolleyCallback{
+        blackBlind.executeRequest(Request.Method.POST, object:
+            VolleyCallback {
             override fun getResponse(response: String?) {
                try {
                    val gsonBuilder = GsonBuilder()

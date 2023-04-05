@@ -1,6 +1,4 @@
-package com.mvvm.myapplicationmvvm
-
-import androidx.lifecycle.MutableLiveData
+package com.mvvm.myapplicationmvvm.model
 
 data class Category(
     val data: List<CategoryData>,
